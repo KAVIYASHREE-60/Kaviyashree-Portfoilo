@@ -1,0 +1,335 @@
+<!-- Please paste your full HTML portfolio code here so I can integrate the additional pages (About, Skills, Projects, Certificates, Contact) with your existing layout without changing your design. Once you provide that code, I’ll directly edit it in this Canvas file. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaviya Shree | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Existing CSS (unchanged) */
+    section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+body {
+  scroll-snap-type: y mandatory;
+}
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      display: flex;
+      justify-content: flex-start;
+      background-color: #1e1e1e;
+      padding: 0.3rem 5%;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      height: 48px;
+      align-items: center;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav-links li a:hover {
+      color: #03dac6;
+      border-bottom: 2px solid #03dac6;
+    }
+    .home-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10% 40px;
+      background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+      min-height: 100vh;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .home-left { max-width: 600px; }
+    .home-left h1 { font-size: 3.4em; color: #03dac6; }
+    .typing { font-size: 1.4em; margin: 10px 0 20px; color: #b2ff59; }
+    .intro { font-size: 1.15em; line-height: 1.7; margin-bottom: 20px; }
+    .highlight-box {
+      background-color: #1a1a1a;
+      border-left: 5px solid #03dac6;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(3, 218, 198, 0.1);
+    }
+    .social-icons a { color: #ccc; margin-right: 15px; font-size: 1.3em; }
+    .social-icons a:hover { color: #03dac6; }
+    .resume-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #03dac6;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .home-right { text-align: center; }
+    .avatar {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      animation: floatImg 4s ease-in-out infinite, pulseBorder 2s ease-in-out infinite;
+      box-shadow: 0 0 30px rgba(3, 218, 198, 0.6);
+      border-radius: 8px;
+      transition: transform 0.4s ease;
+      filter: grayscale(10%) contrast(1.1);
+    }
+    .avatar:hover { transform: scale(1.07) rotate(1deg); filter: grayscale(0%) contrast(1.2); }
+    @keyframes floatImg { 0% { transform: translateY(0); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0); } }
+    @keyframes pulseBorder { 0% { box-shadow: 0 0 15px rgba(3, 218, 198, 0.3); } 50% { box-shadow: 0 0 35px rgba(3, 218, 198, 0.6); } 100% { box-shadow: 0 0 15px rgba(3, 218, 198, 0.3); } }
+    .about-section {
+      padding: 60px 10% 80px;
+      background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+    }
+    .section-title {
+      font-size: 2.6em;
+      color: #03dac6;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .about-box {
+      max-width: 1200px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 25px 30px;
+      border-radius: 10px;
+      border: 1px solid rgba(3, 218, 198, 0.2);
+      box-shadow: 0 0 10px rgba(3, 218, 198, 0.1);
+    }
+    .about-box p { line-height: 1.8; font-size: 1.1em; margin-bottom: 20px; }
+    .certificate-list { list-style: none; padding: 0; }
+    .certificate-list li { margin-bottom: 15px; }
+    .certificate-list a { color: #03dac6; text-decoration: none; }
+    .certificate-list a:hover { text-decoration: underline; }
+    .contact-icons a { color: #ccc; margin: 0 10px; font-size: 1.5em; }
+    .contact-icons a:hover { color: #03dac6; }
+    @media (max-width: 768px) {
+      .home-section { flex-direction: column; text-align: center; }
+      .home-right { margin-top: 30px; }
+    }
+
+   .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .project-card {
+      position: relative;
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid rgba(3,218,198,0.3);
+      padding: 20px;
+      width: 300px;
+      height: 150px;
+      text-align: center;
+      border-radius: 10px;
+      color: #03dac6;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(3,218,198,0.4);
+    }
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.4em;
+    }
+    .project-desc {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background: rgba(3,218,198,0.1);
+      color: #e0e0e0;
+      font-size: 0.95em;
+      transition: bottom 0.4s ease;
+    }
+    .project-card:hover .project-desc {
+      bottom: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .home-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .home-right {
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <ul class="nav-links">
+    <li><a href="#home">🏠 Home</a></li>
+    <li><a href="#about">👩‍💼 About</a></li>
+    <li><a href="#skills">💡 Skills</a></li>
+    <li><a href="#projects">📂 Projects</a></li>
+    <li><a href="#certificates">📜 Certificates</a></li>
+    <li><a href="#contact">📞 Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Home -->
+<section id="home" class="home-section">
+  <div class="home-left">
+    <h1>Kaviyashree K</h1>
+    <div class="typing" id="typing"></div>
+    <p class="intro">A passionate learner 🌱 and thoughtful creator 🎨, I enjoy designing intuitive experiences that connect simplicity with purpose.</p>
+    <div class="highlight-box"><p>"Creativity is intelligence having fun." — Albert Einstein ✨</p></div>
+    <div class="social-icons">
+      <a href="mailto:kaviyashree2855@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+918778552855"><i class="fas fa-phone"></i></a>
+      <a href="https://github.com/kaviyashree-60" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/kaviyashreek/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <a href="resume.pdf" class="resume-btn" download>📄 Download Resume</a>
+  </div>
+  <div class="home-right">
+    <img src="myphoto.jpg" alt="Kaviyashree K" class="avatar" />
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="about-section">
+  <h2 class="section-title">👩‍💼 About Me</h2>
+  <div class="about-box">
+    <p>🎓 Final-year Computer Science Engineering student at VCET, passionate about technology and problem-solving.</p>
+    <p>⚡ Adaptive and quick learner who thrives in fast-paced environments.</p>
+    <p>💡 Strong interest in web development, programming, and creative design.</p>
+    <p>🌍 Enjoys collaborating with diverse teams to create meaningful solutions.</p>
+    <p>📚 Always eager to learn new skills and stay updated with the latest trends in technology.</p>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="about-section">
+  <h2 class="section-title">💡 Skills</h2>
+  <div class="about-box">
+    <h3 style="color:#b2ff59;">🛠️ Technical Skills</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:20px;">
+      <div style="text-align:center; width:120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="60"><p>Java</p>
+      </div>
+      <div style="text-align:center; width:120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" width="60"><p>HTML5</p>
+      </div>
+      <div style="text-align:center; width:120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" width="60"><p>CSS3</p>
+      </div>
+      <div style="text-align:center; width:120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" width="60"><p>JavaScript</p>
+      </div>
+      <div style="text-align:center; width:120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" width="60"><p>GitHub</p>
+      </div>
+    </div>
+    <h3 style="color:#b2ff59; margin-top:50px;">🤝 Non-Technical Skills</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:20px;">
+      <div style="text-align:center; width:140px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/4228/4228731.png" width="60"><p>Team Collaboration</p>
+      </div>
+      <div style="text-align:center; width:140px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="60"><p>Communication</p>
+      </div>
+      <div style="text-align:center; width:140px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/4149/4149684.png" width="60"><p>Leadership</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Projects -->
+<section id="projects" class="about-section">
+  <h2 class="section-title">📂 Projects</h2>
+  <div class="project-container">
+    <a href="https://kaviyashree-60.github.io/Grade-Calculator/" target="_blank" class="project-card">
+      <h3>📊 Grade Calculator</h3>
+      <p class="project-desc">A web tool to calculate grades with a user-friendly interface.</p>
+    </a>
+    <a href="https://kaviyashree-60.github.io/Step-by-Step-Power-Generation-System/" target="_blank" class="project-card">
+      <h3>⚡ Power Generation System</h3>
+      <p class="project-desc">A visual guide showing the process of generating electricity step-by-step.</p>
+    </a>
+  </div>
+</section>
+
+<!-- Certificates -->
+<section id="certificates" class="about-section">
+  <h2 class="section-title">📜 Certificates</h2>
+  <div class="about-box">
+    <ul class="certificate-list">
+      <li>📑 Conference Presentation on Step-by-Step Power Generation System — <a href="certificate.pdf" download>View PDF</a></li>
+      <li>🌐 Sololearn - Web Development — <a href="https://www.sololearn.com/certificates/CC-SD0TKWFP" target="_blank">View Certificate</a></li>
+      <li>💻 Infosys Springboard – Programming in Java — <a href="https://infyspringboard.onwingspan.com/web/en/app/toc/lex_auth_012880464547618816347_shared/overview" target="_blank">View Certificate</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="about-section">
+  <h2 class="section-title">📞 Contact</h2>
+  <div class="about-box" style="text-align:center;">
+    <p>📧 Email: <a href="mailto:kaviyashree2855@gmail.com">kaviyashree2855@gmail.com</a></p>
+    <p>📱 Phone: <a href="tel:+918778552855">+91 8778552855</a></p>
+    <div class="contact-icons">
+      <a href="https://github.com/kaviyashree-60" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/kaviyashreek/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Typing Effect -->
+<script>
+  const text = "Curious Mind 🌟 | Creative Thinker 🎨 | Passionate Learner 📚";
+  let i = 0;
+  const typing = document.getElementById("typing");
+  function typeEffect() {
+    if (i < text.length) {
+      typing.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeEffect, 90);
+    }
+  }
+  window.onload = typeEffect;
+</script>
+
+</body>
+</html>
+

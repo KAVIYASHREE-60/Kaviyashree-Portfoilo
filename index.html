@@ -19,12 +19,9 @@
 
     /* Sections */
     section {
-      min-height: 100vh;   /* Changed from fixed height to min-height */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      scroll-snap-align: start;
-      padding: 60px 10% 80px;
+      min-height: 100vh;
+      display: block;          /* ✅ no flex, start from top */
+      padding: 100px 10% 80px; /* ✅ push content below navbar */
       box-sizing: border-box;
     }
 
@@ -66,7 +63,11 @@
 
     /* Home */
     .home-section {
+      display: flex;           /* ✅ make left & right side by side */
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;               /* ✅ space so image won’t overlap button */
       margin-top: 32px;
       background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
     }
@@ -132,7 +133,7 @@
 
     /* Contact links fix */
     .about-box a {
-      color: #03dac6; /* Fix: use accent color */
+      color: #03dac6;
       text-decoration: none;
       font-weight: 600;
     }
@@ -185,24 +186,26 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .home-section { flex-direction: column; text-align: center; padding: 100px 5% 60px; }
+      .home-section { flex-direction: column; text-align: center; padding: 100px 5% 60px; gap: 20px; }
       .home-left h1 { font-size: 2.2em; }
       .typing { font-size: 1.1em; }
       .intro { font-size: 1em; }
       .avatar { width: 180px; height: 180px; }
+      .home-right { margin-top: 20px; } /* ✅ push image down from button */
       .project-card { width: 90%; }
     }
+
     /* Desktop: keep image on the right */
-.home-left { order: 1; }
-.home-right { order: 2; }
+    .home-left { order: 1; }
+    .home-right { order: 2; }
 
-/* Mobile: place image below the text */
-@media (max-width: 768px) {
-  .home-left { order: 1; }   /* text first */
-  .home-right { order: 2; }  /* image second */
-}
+    /* Mobile: place image below the text */
+    @media (max-width: 768px) {
+      .home-left { order: 1; }
+      .home-right { order: 2; }
+    }
+</style>
 
-  </style>
 </head>
 <body>
 

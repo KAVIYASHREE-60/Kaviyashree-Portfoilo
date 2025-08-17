@@ -204,6 +204,28 @@
       .home-left { order: 1; }
       .home-right { order: 2; }
     }
+
+    /* Certificates list spacing */
+.certificate-list {
+  list-style: none;
+  padding: 0;
+}
+.certificate-list li {
+  margin-bottom: 15px;   /* ✅ spacing between certificates */
+  line-height: 1.6;
+}
+
+/* Desktop: keep text left and image right */
+.home-left { order: 1; }
+.home-right { order: 2; }
+
+/* Mobile: place image above the name */
+@media (max-width: 768px) {
+  .home-left { order: 2; text-align: center; }
+  .home-right { order: 1; margin-bottom: 15px; }
+  .home-left h1 { margin-top: 10px; }
+}
+
 </style>
 
 </head>
